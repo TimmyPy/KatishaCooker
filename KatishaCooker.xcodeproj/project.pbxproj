@@ -44,6 +44,7 @@
 		CCE821F82A7842390071899A /* KatishaCookerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KatishaCookerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE821FC2A7842390071899A /* KatishaCookerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatishaCookerUITests.swift; sourceTree = "<group>"; };
 		CCE821FE2A7842390071899A /* KatishaCookerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatishaCookerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CCE8220B2A7845E40071899A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		CCE821D52A7842380071899A = {
 			isa = PBXGroup;
 			children = (
+				CCE8220B2A7845E40071899A /* .gitignore */,
 				CCE821E02A7842380071899A /* KatishaCooker */,
 				CCE821F12A7842390071899A /* KatishaCookerTests */,
 				CCE821FB2A7842390071899A /* KatishaCookerUITests */,
