@@ -35,23 +35,25 @@ struct TimerLabelView: View {
 }
 
 struct TimerRowView: View {
-    var timer: TimerEntity
+    @State var timer: TimerModel
+    
     var body: some View {
+        let _ = Self._printChanges()
         HStack(){
             // ToDo: Remove action by swipe
             GroupBox(
-                label: TimerLabelView(title: timer.name)
+                label: TimerLabelView(title: timer.title)
             ) {
-                Text("\(timer.countDownTimer):00")
+                Text("\(timer.remainTime):00")
                     .padding(.top, 15)
                     .frame(alignment: .leading)
                     .font(.system(size: 50))
             }
             Button(
                 action: {
-                    print("\(timer.isRunning), \(timer.name)")
+                    print("\(timer.isRunning), \(timer.title)")
                     self.timer.isRunning.toggle()
-                    print("\(self.timer.isRunning), \(timer.name)")
+                    print("\(timer.isRunning), \(timer.title)")
                 },
                 label: {
                     Circle()
@@ -70,31 +72,19 @@ struct TimerRowView: View {
 }
 
 struct ContentView: View {
-    @State var timers = [
-        TimerEntity(countDown: 5),
-        TimerEntity(countDown: 15),
-        TimerEntity(countDown: 25),
-        TimerEntity(countDown: 35),
-        TimerEntity(countDown: 45),
-    ];
-    @State var countDownTimer: UInt16 = 5;
-    @State var isRunning: Bool = false;
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @ObservedObject var model = TimerViewModel()
     
     var body: some View {
         ZStack{
-            List{
-                ForEach(timers) { item in
-                    TimerRowView(timer: item)
-                }
+            List(model.timers, id: \.id){ timerEntity in
+                TimerRowView(timer: timerEntity)
             }
             
             Spacer()
             
             Button(action: {
                 print("Plus button click")
-                timers.append(TimerEntity(countDown: 15));
-                
             }, label: {
                 Circle()
                     .accentColor(.cyan)
