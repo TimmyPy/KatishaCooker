@@ -7,10 +7,14 @@
 
 import Foundation
 
-class TimerViewModel: ObservableObject {
+final class TimerViewModel: ObservableObject {
     @Published var timers = [TimerModel]()
     
     init() {
         self.timers = ContentPreviewHelper.mockTimers()
+    }
+    
+    func add() {
+        self.timers.append(TimerModel(title: "Mock \(self.timers.count + 1)"))
     }
 }

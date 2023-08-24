@@ -7,94 +7,110 @@
 
 import SwiftUI
 
-class Storage {
-    
-}
-
-class TimerEntity: Identifiable {
-    @State var countDownTimer: UInt16;
-    @State var initialValue: UInt16;
-    @State var isRunning: Bool;
-    @State var name: String;
-    
-    init(countDown: UInt16) {
-        self.initialValue = countDown;
-        self.countDownTimer = countDown;
-        self.isRunning = false;
-        self.name = "Katisha Timer";
+struct TimerEntityGroupBoxStyle: GroupBoxStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading) {
+            configuration.label
+            configuration.content
+        }
+        .padding()
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 }
 
 struct TimerLabelView: View {
     let title: String
-    
+
     var body: some View {
         Label(title, systemImage: "bolt.fill" )
             .labelStyle(.titleOnly)
+            .font(.system(size: 25))
     }
 }
 
 struct TimerRowView: View {
     @State var timer: TimerModel
+    @State var tmv: TimerViewModel
     
     var body: some View {
         let _ = Self._printChanges()
+        // Todo: make time on the same level as play button
         HStack(){
-            // ToDo: Remove action by swipe
             GroupBox(
                 label: TimerLabelView(title: timer.title)
             ) {
-                Text("\(timer.remainTime):00")
-                    .padding(.top, 15)
+                Text("\(timer.time)")
+//                    .padding(.vertical, 15)
                     .frame(alignment: .leading)
-                    .font(.system(size: 50))
+                    .font(.system(size: 45))
             }
+            .groupBoxStyle(TimerEntityGroupBoxStyle())
+            
+            Spacer()
+            
             Button(
                 action: {
-                    print("\(timer.isRunning), \(timer.title)")
-                    self.timer.isRunning.toggle()
-                    print("\(timer.isRunning), \(timer.title)")
+                    print("\(timer.isActive), \(timer.title) \(timer.id)")
+                    self.timer.isActive.toggle()
+                    print("\(timer.isActive), \(timer.title)")
                 },
                 label: {
                     Circle()
                         .overlay(
-                            Image(systemName: self.timer.isRunning == true ? "pause.fill": "play.fill")
+                            Image(systemName: timer.isActive == true ? "pause.fill": "play.fill")
                                 .foregroundColor(.white)
                         )
                 }
             )
-            .accentColor(self.timer.isRunning == true ? .red: .blue)
-            .frame(width: 75, height: 75)
+            .accentColor(timer.isActive == true ? .red: .blue)
+            .frame(width: 55, height: 55)
             .background(.white)
             .clipShape(Rectangle())
+            .buttonStyle(BorderlessButtonStyle())
         }
     }
 }
 
 struct ContentView: View {
     
-    @ObservedObject var model = TimerViewModel()
+    @ObservedObject var tmv = TimerViewModel()
     
+    private let t = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         ZStack{
-            List(model.timers, id: \.id){ timerEntity in
-                TimerRowView(timer: timerEntity)
+            List {
+                ForEach(tmv.timers, id: \.id) { timerEntity in
+                    TimerRowView(timer: timerEntity, tmv: tmv)
+                }
+                .onDelete { indexSet in
+                    tmv.timers.remove(atOffsets: indexSet)
+                }
+                .onMove { indexSet, index in
+                    tmv.timers.move(fromOffsets: indexSet, toOffset: index)
+                }
+            }
+            .toolbar {
+                EditButton()
             }
             
-            Spacer()
-            
-            Button(action: {
-                print("Plus button click")
-            }, label: {
-                Circle()
-                    .accentColor(.cyan)
-                    .frame(width: 100, height: 100, alignment: .center)
-                    .overlay(
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                            .font(.system(size: 30))
-                    )
-            })
+            VStack {
+                Spacer()
+                
+                Button(action: {
+                    print("Plus button click")
+                    tmv.add()
+                }, label: {
+                    Circle()
+                        .accentColor(.cyan)
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .overlay(
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .font(.system(size: 30))
+                        )
+                })
+            }
         }
     }
 }

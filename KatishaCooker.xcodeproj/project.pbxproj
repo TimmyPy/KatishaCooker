@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CCD64B452A7FCC0600275F0F /* TimerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B442A7FCC0600275F0F /* TimerEntity.swift */; };
+		CCD64B452A7FCC0600275F0F /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B442A7FCC0600275F0F /* TimerModel.swift */; };
 		CCD64B482A7FCC4A00275F0F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B472A7FCC4A00275F0F /* TimerView.swift */; };
 		CCD64B4C2A7FCCA800275F0F /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B4B2A7FCCA800275F0F /* TimerViewModel.swift */; };
-		CCD64B4E2A8413EF00275F0F /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B4D2A8413EF00275F0F /* TimerModel.swift */; };
 		CCD64B502A84210600275F0F /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B4F2A84210600275F0F /* Mocks.swift */; };
 		CCE821E22A7842390071899A /* KatishaCookerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE821E12A7842390071899A /* KatishaCookerApp.swift */; };
 		CCE821E42A7842390071899A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE821E32A7842390071899A /* ContentView.swift */; };
@@ -40,10 +39,9 @@
 
 /* Begin PBXFileReference section */
 		CCD64B3F2A7FC30000275F0F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CCD64B442A7FCC0600275F0F /* TimerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEntity.swift; sourceTree = "<group>"; };
+		CCD64B442A7FCC0600275F0F /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		CCD64B472A7FCC4A00275F0F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		CCD64B4B2A7FCCA800275F0F /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
-		CCD64B4D2A8413EF00275F0F /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		CCD64B4F2A84210600275F0F /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		CCE821DE2A7842380071899A /* KatishaCooker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatishaCooker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE821E12A7842390071899A /* KatishaCookerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatishaCookerApp.swift; sourceTree = "<group>"; };
@@ -86,7 +84,7 @@
 		CCD64B462A7FCC2400275F0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CCD64B442A7FCC0600275F0F /* TimerEntity.swift */,
+				CCD64B442A7FCC0600275F0F /* TimerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				CCD64B4B2A7FCCA800275F0F /* TimerViewModel.swift */,
-				CCD64B4D2A8413EF00275F0F /* TimerModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -301,9 +298,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD64B4C2A7FCCA800275F0F /* TimerViewModel.swift in Sources */,
-				CCD64B452A7FCC0600275F0F /* TimerEntity.swift in Sources */,
+				CCD64B452A7FCC0600275F0F /* TimerModel.swift in Sources */,
 				CCE821E42A7842390071899A /* ContentView.swift in Sources */,
-				CCD64B4E2A8413EF00275F0F /* TimerModel.swift in Sources */,
 				CCD64B502A84210600275F0F /* Mocks.swift in Sources */,
 				CCD64B482A7FCC4A00275F0F /* TimerView.swift in Sources */,
 				CCE821E22A7842390071899A /* KatishaCookerApp.swift in Sources */,
