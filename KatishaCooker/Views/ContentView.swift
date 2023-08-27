@@ -84,10 +84,10 @@ struct ContentView: View {
                     TimerRowView(timer: timerEntity, tmv: tmv)
                 }
                 .onDelete { indexSet in
-                    tmv.timers.remove(atOffsets: indexSet)
+                    tmv.remove(index: indexSet)
                 }
                 .onMove { indexSet, index in
-                    tmv.timers.move(fromOffsets: indexSet, toOffset: index)
+                    tmv.move(fromIndex: indexSet, toIndex: index)
                 }
             }
             .toolbar {
