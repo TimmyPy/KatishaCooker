@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC54BCB32AA343EC002B2340 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54BCB22AA343EC002B2340 /* TimePickerView.swift */; };
 		CCD64B452A7FCC0600275F0F /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B442A7FCC0600275F0F /* TimerModel.swift */; };
 		CCD64B482A7FCC4A00275F0F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B472A7FCC4A00275F0F /* TimerView.swift */; };
 		CCD64B4C2A7FCCA800275F0F /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD64B4B2A7FCCA800275F0F /* TimerViewModel.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC54BCB22AA343EC002B2340 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		CCD64B3F2A7FC30000275F0F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CCD64B442A7FCC0600275F0F /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		CCD64B472A7FCC4A00275F0F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				CCD64B4F2A84210600275F0F /* Mocks.swift */,
 				CCE821E32A7842390071899A /* ContentView.swift */,
 				CCD64B472A7FCC4A00275F0F /* TimerView.swift */,
+				CC54BCB22AA343EC002B2340 /* TimePickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -110,8 +113,8 @@
 		CCE821D52A7842380071899A = {
 			isa = PBXGroup;
 			children = (
-				CCD64B3F2A7FC30000275F0F /* README.md */,
 				CCE8220B2A7845E40071899A /* .gitignore */,
+				CCD64B3F2A7FC30000275F0F /* README.md */,
 				CCE821E02A7842380071899A /* KatishaCooker */,
 				CCE821F12A7842390071899A /* KatishaCookerTests */,
 				CCE821FB2A7842390071899A /* KatishaCookerUITests */,
@@ -300,6 +303,7 @@
 				CCD64B4C2A7FCCA800275F0F /* TimerViewModel.swift in Sources */,
 				CCD64B452A7FCC0600275F0F /* TimerModel.swift in Sources */,
 				CCE821E42A7842390071899A /* ContentView.swift in Sources */,
+				CC54BCB32AA343EC002B2340 /* TimePickerView.swift in Sources */,
 				CCD64B502A84210600275F0F /* Mocks.swift in Sources */,
 				CCD64B482A7FCC4A00275F0F /* TimerView.swift in Sources */,
 				CCE821E22A7842390071899A /* KatishaCookerApp.swift in Sources */,

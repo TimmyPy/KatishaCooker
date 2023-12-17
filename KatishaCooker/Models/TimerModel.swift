@@ -8,17 +8,38 @@
 import Foundation
 
 
-struct TimerModel: Identifiable, Codable {
-    var id = UUID()
-    var title: String = ""
-    var isActive: Bool = false
-    var time: String = "00:00:00"
-    var initialTime: UInt16 = 0
-    var endDate = Date()
+class TimerModel: Identifiable, Codable {
+    var id: UUID
+    var title: String
+    var duration: Double
+    var isActive: Bool
     
-    var minutes: UInt16 = 5 {
-        didSet {
-            self.time = "\(Int(minutes)):00:00"
-        }
+    // read-only comupet properties
+    var time: String {
+        let timeInterval = Int(self.duration)
+        let hours: Int = timeInterval / 3600
+        let minutes: Int = timeInterval / 60 % 60
+        let seconds: Int = timeInterval % 60
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
+    init(title: String, duration: Double) {
+        self.id = UUID()
+        self.duration = duration
+        self.title = title
+        
+        self.isActive = false
+    }
+    
+    func set_title(value: String) {
+        self.title = value
+    }
+    
+    func set_duration(value: Double) {
+        self.duration = value
+    }
+    
+    func toggle() {
+        self.isActive.toggle()
     }
 }

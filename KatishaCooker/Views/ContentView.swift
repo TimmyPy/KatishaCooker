@@ -11,7 +11,9 @@ struct TimerEntityGroupBoxStyle: GroupBoxStyle {
     func makeBody(configuration: Configuration) -> some View {
         VStack(alignment: .leading) {
             configuration.label
-            configuration.content
+            HStack() {
+                configuration.content
+            }
         }
         .padding()
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -19,28 +21,29 @@ struct TimerEntityGroupBoxStyle: GroupBoxStyle {
 }
 
 struct TimerLabelView: View {
-    let title: String
+    @State var title: String
 
     var body: some View {
-        Label(title, systemImage: "bolt.fill" )
-            .labelStyle(.titleOnly)
-            .font(.system(size: 25))
+        TextField(
+            "Title",
+            text: $title
+        )
+        .font(.system(size: 25))
     }
 }
 
 struct TimerRowView: View {
-    @State var timer: TimerModel
+    @Binding var timer: TimerModel
     @State var tmv: TimerViewModel
+    
     
     var body: some View {
         let _ = Self._printChanges()
-        // Todo: make time on the same level as play button
         HStack(){
             GroupBox(
                 label: TimerLabelView(title: timer.title)
             ) {
                 Text("\(timer.time)")
-//                    .padding(.vertical, 15)
                     .frame(alignment: .leading)
                     .font(.system(size: 45))
             }
@@ -51,7 +54,7 @@ struct TimerRowView: View {
             Button(
                 action: {
                     print("\(timer.isActive), \(timer.title) \(timer.id)")
-                    self.timer.isActive.toggle()
+                    self.tmv.toggleTimer(tId: timer.id)
                     print("\(timer.isActive), \(timer.title)")
                 },
                 label: {
@@ -73,15 +76,15 @@ struct TimerRowView: View {
 
 struct ContentView: View {
     
-    @ObservedObject var tmv = TimerViewModel()
+    @StateObject private var tmv = TimerViewModel()
     
-    private let t = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let t = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ZStack{
             List {
-                ForEach(tmv.timers, id: \.id) { timerEntity in
-                    TimerRowView(timer: timerEntity, tmv: tmv)
+                ForEach($tmv.timers) { $timerEntity in
+                    TimerRowView(timer: $timerEntity, tmv: tmv)
                 }
                 .onDelete { indexSet in
                     tmv.remove(index: indexSet)
